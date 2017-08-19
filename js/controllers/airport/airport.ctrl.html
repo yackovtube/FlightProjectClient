@@ -22,7 +22,7 @@
                                 <td>{{runway.tag}}</td>
                                 <td>{{runway.status}}</td>
                                 <td>
-                                    <span ng-if="runway.plane">{{runway.plane}}</span>
+                                    <span ng-if="runway.plane">{{runway.plane._id}}</span>
                                     <span class="badge badge-success" ng-if="!runway.plane">Available</span>
                                 </td>
                                 <td>
@@ -51,8 +51,8 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="terminalSpot in terminal">
-                                <td>{{terminalSpot._id}}</td>
-                                <td>{{terminalSpot.missionStartTime}}</td>
+                                <td>{{terminalSpot.plane._id}}</td>
+                                <td>{{terminalSpot.plane.missionStartTime}}</td>
                             </tr>
                             
                         </tbody>
