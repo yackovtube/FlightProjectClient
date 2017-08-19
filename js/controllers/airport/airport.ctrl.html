@@ -1,1 +1,67 @@
-<diV>{{title}}</diV>
+<div class="animated fadeIn">
+
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-institution fa-align-justify"></i> Runways
+                </div>
+                <div class="card-block">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Tag</th>
+                                <th>Status</th>
+                                <th>Plane</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="runway in runways">
+                                <td>{{runway.tag}}</td>
+                                <td>{{runway.status}}</td>
+                                <td>
+                                    <span ng-if="runway.plane">{{runway.plane}}</span>
+                                    <span class="badge badge-success" ng-if="!runway.plane">Available</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger">Close runway</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+        
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-plane fa-align-justify"></i> Terminal
+                </div>
+                <div class="card-block">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Plane ID</th>
+                                <th>Exit terminal at</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="terminalSpot in terminal">
+                                <td>{{terminalSpot._id}}</td>
+                                <td>{{terminalSpot.missionStartTime}}</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+
+ 
+    </div>
+</div>
