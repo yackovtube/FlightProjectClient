@@ -1,6 +1,6 @@
 angular
     .module('app')
-    .controller('AirportCtrl', ['$scope', 'AirportService', function ($scope, AirportService) {
+    .controller('AirportCtrl', ['$scope', 'AirportService','colorHash',  function ($scope, AirportService, colorHash) {
         $scope.title = 'Hola!';
         $scope.runways = [];
         $scope.terminal = [];
@@ -12,6 +12,11 @@ angular
 
         $scope.openRunway = function(runway){
             AirportService.openRunway(runway._id);
+        }
+
+        $scope.genrateColor = function(str){
+            let string = str.substr(str.length-6)
+            return colorHash.hex(string);
         }
 
         AirportService.subscribe(function(airportData){

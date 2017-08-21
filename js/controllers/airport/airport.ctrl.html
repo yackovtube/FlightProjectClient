@@ -25,7 +25,7 @@
                                     <span class="badge badge-danger" ng-if="runway.status==1">Closed</span>
                                 </td>
                                 <td>
-                                    <span ng-if="runway.plane">{{runway.plane._id}}</span>
+                                    <span ng-style="{'background':genrateColor(runway.plane._id)}" ng-if="runway.plane">{{runway.plane._id}}</span>
                                     <span class="badge badge-success" ng-if="!runway.plane">Available</span>
                                 </td>
                                 <td>
@@ -55,10 +55,11 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="terminalSpot in terminal">
-                                <td>{{terminalSpot.plane._id}}</td>
+                                <td>
+                                    <span ng-style="{'background':genrateColor(terminalSpot.plane._id)}">{{terminalSpot.plane._id}}</span>
+                                </td>
                                 <td>{{terminalSpot.plane.missionStartTime}}</td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>

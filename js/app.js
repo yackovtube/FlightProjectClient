@@ -34,3 +34,6 @@ angular
   .service('socket', function () {
     return io(SOCKET_HOST);
   })
+  .service('colorHash', function () {
+    return new ColorHash();
+  })
