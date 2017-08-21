@@ -20,13 +20,17 @@
                         <tbody>
                             <tr ng-repeat="runway in runways">
                                 <td>{{runway.tag}}</td>
-                                <td>{{runway.status}}</td>
+                                <td>
+                                    <span class="badge badge-success" ng-if="runway.status==0">Open</span>
+                                    <span class="badge badge-danger" ng-if="runway.status==1">Closed</span>
+                                </td>
                                 <td>
                                     <span ng-if="runway.plane">{{runway.plane._id}}</span>
                                     <span class="badge badge-success" ng-if="!runway.plane">Available</span>
                                 </td>
                                 <td>
-                                    <button ng-click='closeRunway(runway)' type="button" class="btn btn-danger">Close runway</button>
+                                    <button ng-click='openRunway(runway)' ng-if="runway.status==1" type="button" class="btn btn-primary">Open runway</button>
+                                    <button ng-click='closeRunway(runway)' ng-if="runway.status==0" type="button" class="btn btn-danger">Close runway</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -35,7 +39,7 @@
             </div>
         </div>
         <!--/.col-->
-        
+
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
@@ -54,7 +58,7 @@
                                 <td>{{terminalSpot.plane._id}}</td>
                                 <td>{{terminalSpot.plane.missionStartTime}}</td>
                             </tr>
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -62,6 +66,6 @@
         </div>
         <!--/.col-->
 
- 
+
     </div>
 </div>

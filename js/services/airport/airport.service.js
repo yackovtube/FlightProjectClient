@@ -26,9 +26,14 @@ angular
             });
         })
 
-        this.closeRunway = function(runway){
+        this.openRunway = function(id){
+            console.log('AirportService::openRunway')
+            socket.emit('openRunway', id)
+        };
+
+        this.closeRunway = function(id){
             console.log('AirportService::closeRunway')
-            socket.emit('closeRunway', runway)
+            socket.emit('closeRunway', id)
         };
     }]);
 
