@@ -35,5 +35,15 @@ angular
             console.log('AirportService::closeRunway')
             socket.emit('closeRunway', id)
         };
+
+        this.slowSpeed = function(){
+            console.log('AirportService::slowSpeed')
+            socket.emit('slowSpeed')
+        };
+        
+        this.fastSpeed = function(){
+            console.log('AirportService::fastSpeed')
+            socket.emit('fastSpeed')
+        };
     }]);
 

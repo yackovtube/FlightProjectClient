@@ -14,6 +14,14 @@ angular
             AirportService.openRunway(runway._id);
         }
 
+        $scope.slowSpeed= function(){
+            AirportService.slowSpeed();
+        }
+
+        $scope.fastSpeed= function(){
+            AirportService.fastSpeed();
+        }
+
         $scope.genrateColor = function(str){
             let string = str.substr(str.length-6)
             return colorHash.hex(string);
