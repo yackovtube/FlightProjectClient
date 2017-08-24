@@ -18,6 +18,36 @@
     </div>
 
     <div class="row">
+          <div class="col-lg-3">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-fighter-jet fa-align-justify"></i> Arrivals
+                </div>
+                <div class="card-block">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Plane ID</th>
+                                <th>Waiting</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="plane in inBound">
+                                <td>
+                                    <span ng-style="{'background':genrateColor(plane._id)}">{{plane._id}}</span>
+                                    <i ng-if="runway.plane.mission == 4" class="fa fa-warning fa-align-justify"></i>
+                                </td>
+                                <td>{{calculateWaitTime(plane)}}s</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <!-- <span>{{logs | json}}</span> -->
+                </div>
+            </div>
+
+        </div>
 
 
         <div class="col-lg-6">
@@ -63,7 +93,7 @@
         </div>
         <!--/.col-->
 
-        <div class="col-lg-6">
+        <div class="col-lg-3">
             <div class="card">
                 <div class="card-header">
                     <i class="fa fa-plane fa-align-justify"></i> Terminal
@@ -81,10 +111,13 @@
                                 <td>
                                     <span ng-style="{'background':genrateColor(terminalSpot.plane._id)}">{{terminalSpot.plane._id}}</span>
                                 </td>
-                                <td>{{terminalSpot.plane.missionStartTime}}</td>
+                                <td>{{calculateExitTime(terminalSpot)}}s</td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div>
+                    <!-- <span>{{logs | json}}</span> -->
                 </div>
             </div>
 

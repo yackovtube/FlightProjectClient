@@ -14,15 +14,10 @@ angular
 
             //Note: using $rootScope.$apply to sync server call back with angular loop
             $rootScope.$apply(function () {
-
                 console.log('AirportService::EVENT - Airport update', new Date)
                 for (let i in observers) {
-                    observers[i]({
-                        runways: data.runways,
-                        terminal: data.terminal
-                    });
+                    observers[i](data);
                 }
-
             });
         })
 
