@@ -43,7 +43,12 @@
                                     <span class="badge badge-danger" ng-if="runway.status==1">Closed</span>
                                 </td>
                                 <td>
-                                    <span ng-style="{'background':genrateColor(runway.plane._id)}" ng-if="runway.plane">{{runway.plane._id}}</span>
+                                    <div ng-if="runway.plane">
+                                        <span ng-style="{'background':genrateColor(runway.plane._id)}" >{{runway.plane._id}}</span>
+                                        <i ng-if="runway.plane.mission == 1" class="fa fa-arrow-circle-up fa-align-justify"></i>
+                                        <i ng-if="runway.plane.mission == 0" class="fa fa-arrow-circle-down fa-align-justify"></i>
+                                        <i ng-if="runway.plane.mission == 4" class="fa fa-warning fa-align-justify"></i>
+                                    </div>
                                     <span class="badge badge-success" ng-if="!runway.plane">Available</span>
                                 </td>
                                 <td>
