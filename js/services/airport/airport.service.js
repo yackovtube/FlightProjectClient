@@ -40,5 +40,10 @@ angular
             console.log('AirportService::fastSpeed')
             socket.emit('fastSpeed')
         };
+
+        this.addEmergencyLanding = function(){
+            console.log('AirportService::addEmergencyLanding')
+            socket.emit('addEmergencyLanding')
+        }
     }]);
 

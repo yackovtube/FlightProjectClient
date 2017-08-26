@@ -1,8 +1,8 @@
 <div class="animated fadeIn">
 
-
     <div class="row">
-        <div class="col-lg-12">
+
+        <div class="col-lg-8">
             <div class="card">
                 <div class="card-header">
                     <i class="fa fa-gg-circle fa-align-justify"></i> Airport control
@@ -11,17 +11,40 @@
                     <div>
                         <button ng-click='slowSpeed()' type="button" class="btn btn-primary">Slow speed</button>
                         <button ng-click='fastSpeed()' type="button" class="btn btn-primary">Fast speed</button>
+                        <button ng-click='addEmergencyLanding()' type="button" class="btn btn-primary">Add Emergency Landing</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-4">
+
+            <div class="card" ng-if="isEmergency">
+                <div class="card-block p-0 clearfix">
+                    <i class="fa fa-warning bg-danger p-4 font-2xl mr-3 float-left"></i>
+                    <div class="h5 text-danger mb-0 pt-3">Emergency Landing in bound</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs">Status</div>
+                </div>
+            </div>
+
+            <div class="card" ng-if="!isEmergency">
+                <div class="card-block p-0 clearfix">
+                    <i class="fa fa-cloud bg-primary p-4 font-2xl mr-3 float-left"></i>
+                    <div class="h5 text-primary mb-0 pt-3">Clear sky</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs">Status</div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
     <div class="row">
-          <div class="col-lg-3">
+        <div class="col-lg-3">
             <div class="card">
                 <div class="card-header">
-                    <i class="fa fa-fighter-jet fa-align-justify"></i> Arrivals
+                    <i class="fa fa-fighter-jet fa-align-justify"></i> Arrivals 
+                    <span class="badge badge-info float-right">{{inBound.length}}</span>
                 </div>
                 <div class="card-block">
                     <table class="table">
@@ -35,7 +58,8 @@
                             <tr ng-repeat="plane in inBound">
                                 <td>
                                     <span ng-style="{'background':genrateColor(plane._id)}">{{plane._id}}</span>
-                                    <i ng-if="runway.plane.mission == 4" class="fa fa-warning fa-align-justify"></i>
+                                    <i ng-if="plane.mission == 4" class="fa fa-warning fa-align-justify"></i>
+
                                 </td>
                                 <td>{{calculateWaitTime(plane)}}s</td>
                             </tr>
@@ -74,7 +98,7 @@
                                 </td>
                                 <td>
                                     <div ng-if="runway.plane">
-                                        <span ng-style="{'background':genrateColor(runway.plane._id)}" >{{runway.plane._id}}</span>
+                                        <span ng-style="{'background':genrateColor(runway.plane._id)}">{{runway.plane._id}}</span>
                                         <i ng-if="runway.plane.mission == 1" class="fa fa-arrow-circle-up fa-align-justify"></i>
                                         <i ng-if="runway.plane.mission == 0" class="fa fa-arrow-circle-down fa-align-justify"></i>
                                         <i ng-if="runway.plane.mission == 4" class="fa fa-warning fa-align-justify"></i>
@@ -97,6 +121,7 @@
             <div class="card">
                 <div class="card-header">
                     <i class="fa fa-plane fa-align-justify"></i> Terminal
+                    <span class="badge badge-info float-right">{{terminal.length}}</span>
                 </div>
                 <div class="card-block">
                     <table class="table">
